@@ -61,3 +61,9 @@ Of course, I have many things planned, fear not!
 
 #### OMG something doesn't work!!!
 Sorry, this panel is still *very* WIP. Create an issue thread, and I'll get to it ASAP.
+
+#### Why are login details stored in an open text file!?!?!?!?!?
+Don't worry, it's all hashed; you're safe.
+
+#### Can I change the background image?
+Of course! The image is located at `/panel/wallpaper.png`. I will soon add a feature to change this within the panel.
