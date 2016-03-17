@@ -1,14 +1,12 @@
-## Hold up, what's this?
-This is a Minecraft server control panel, developed using a combination of PHP, JavaScript and Java. If that doesn't mean anything to you, it's basically a multicraft alternative; you would use it to access and control your server remotely.
-
-# Summary
-#### Welcome to my panel, or I guess, *your* panel. This panel was built with [Bootstrap 4](v4-alpha.getbootstrap.com), PHP, Javascript, and Java. That being said, this panel has many cool features (some still in the works!), as well as full mobile support and constant visual updating, for the best look and functionality.
+# Launchpad Administrative Minecraft Panel
+#### Welcome to my panel, or I guess, *your* panel. This panel was built with [Bootstrap 4](v4-alpha.getbootstrap.com), PHP, Javascript, and Java. That being said, Launchpad has many cool features (some still in the works!), as well as full mobile support and constant visual updating, for the best look and functionality.
 ##### Ok, so why don't I use Multicraft?
  Well, here are a couple issues with Multicraft:
  - It costs money
  - Old versions have very limited functionality
  - Old versions look old and lame
  - Lots of class injection
+
 Ok, so why should I use your panel?
 My panel has many features out of the box, and more coming:
  - It's 100% free!
@@ -17,6 +15,16 @@ My panel has many features out of the box, and more coming:
  - Modern look and feel
  - Mobile support
  - Easy setup
+
+Planned Features:
+ - Votifier
+ - Full server.properties editor
+ - Autorestart
+ - Backups
+ - More!
+
+## Hold up, what exactly *is* this?
+This is a Minecraft server control panel, developed using a combination of PHP, JavaScript and Java. If that doesn't mean anything to you, it's basically a multicraft alternative; you would use it to access and control your server remotely.
 
 ## Installation
 
