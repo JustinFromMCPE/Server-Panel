@@ -29,6 +29,14 @@ Planned Features:
 This is a Minecraft server control panel, developed using a combination of PHP, JavaScript and Java. If that doesn't mean anything to you, it's basically a multicraft alternative; you would use it to access and control your server remotely.
 
 ## Installation
+#### PHP
+1. [Click here](http://php.net/manual/en/install.php) To learn how to install PHP on your system. Note, most Mac and Linux computers should come with PHP installed.
+2. Enable sockets. Go to your php.ini file (/private/etc/php.ini.default on Macs, C:\PHP on PC, depends where you installed it, /etc/php.ini on Linux, most likely). Open the file in a text editor, and find the line `;extension=php_sockets.dll` and remove the `;`.
+#### Panel
+1. Move the `panel` and `server` folders to your preferred locations.
+2. Open `server/config.properties` and fill `panel-directory` with the directory of the panel (eg: `C:\panel`).
+3. Notice the `port` setting. This must always be set to the same as the `wrapper port` setting, in the panel.
+4. Run `panel/start.bash` or `panel/start.sh`. This will open the website on the port 80 (default web port). If you are on a web server, you can skip this step, as long as you placed the `panel` folder in your dedicated website folder.
 
 ## FAQ
 #### What are the requirements for using this?
