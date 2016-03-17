@@ -9,7 +9,7 @@ This is a Minecraft server control panel, developed using a combination of PHP, 
  - Old versions have very limited functionality
  - Old versions look old and lame
  - Lots of class injection
-##### Ok, so why should I use your panel?
+Ok, so why should I use your panel?
 My panel has many features out of the box, and more coming:
  - It's 100% free!
  - Open source
