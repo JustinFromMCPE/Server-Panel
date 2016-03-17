@@ -23,6 +23,8 @@ Planned Features:
  - Backups
  - More!
 
+![alt-text](http://i.imgur.com/RS5lfrS.png?1 "Desktop View")
+![alt-text](http://i.imgur.com/dvACOdj.png?1 "Mobile View")
 ## Hold up, what exactly *is* this?
 This is a Minecraft server control panel, developed using a combination of PHP, JavaScript and Java. If that doesn't mean anything to you, it's basically a multicraft alternative; you would use it to access and control your server remotely.
 
