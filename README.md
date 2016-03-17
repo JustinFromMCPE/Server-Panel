@@ -41,7 +41,8 @@ This is a Minecraft server control panel, developed using a combination of PHP, 
 5. Put your desired Minecraft server jar into `/server/server/`. Proceed to open the panel (if you are on a local machine, go `http://localhost`) and set the name of your desired jarfile, in `panel-settings`. **NOTICE**: The default login credentials are "`admin`" and "`password`".
 6. Run `server/start.bat` or `server/start.sh`. You can directly run the jar to run it in the background, however, this will make closing it very difficult
 6.1. Forward your ports. If you're on a hosted machine, you probably can skip this step. If you're not, you must simply forward ports 80 and your desired Minecraft server port (usually 25565). However, do **not** forward your wrapper port (usually 8040).
-7. You're done! Change your username and password, mess around. It's *your* panel, after all!
+7. If you're on Windows, run `panel/start.bat`. If you're on a Mac or Linux, make sure the `panel` folder is in your default web directory, or change it in `php.ini`.
+8. You're done! Change your username and password, mess around. It's *your* panel, after all!
 
 ## FAQ
 #### What are the requirements for using this?
