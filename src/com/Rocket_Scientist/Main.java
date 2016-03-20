@@ -1,11 +1,22 @@
 package com.Rocket_Scientist;
 
 import com.google.gson.Gson;
+import com.sun.crypto.provider.RSACipher;
+import sun.misc.BASE64Decoder;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.security.*;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Base64;
 import java.util.Properties;
 
 public class Main {
@@ -22,7 +33,28 @@ public static String serverPort;
 public static String map;
 public static Socket client;
 public static ServerSocket socket;
+public static ServerSocket votifier;
+public static Socket vote;
 
+    public static PrivateKey readPrivateKey(File keyFile) throws Exception {
+        // read key bytes
+        FileInputStream in = new FileInputStream(keyFile);
+        byte[] keyBytes = new byte[in.available()];
+        in.read(keyBytes);
+        in.close();
+
+        String privateKey = new String(keyBytes, "UTF-8");
+        privateKey = privateKey.replaceAll("(-+BEGIN RSA PRIVATE KEY-+\\r?\\n|-+END RSA PRIVATE KEY-+\\r?\\n?)", "");
+
+        // don't use this for real projects!
+        BASE64Decoder decoder = new BASE64Decoder();
+        keyBytes = decoder.decodeBuffer(privateKey);
+
+        // generate private key
+        PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(spec);
+    }
     public static void first() throws IOException {
 
         // Check for wrapper config
@@ -30,6 +62,11 @@ public static ServerSocket socket;
             PrintWriter writer = new PrintWriter("config.properties", "UTF-8");
             writer.println("port=8040");
             writer.println("panel-directory=");
+            writer.close();
+        }
+        // Check for private key
+        if(!new File("private.key").exists()) {
+            PrintWriter writer = new PrintWriter("private.key");
             writer.close();
         }
         // Get wrapper config
@@ -47,31 +84,24 @@ public static ServerSocket socket;
             writer.println("password=5f4dcc3b5aa765d61d8327deb882cf99");
             writer.println("wrapper-port=" + Integer.toString(port));
             writer.println("server-jar=");
-            writer.println("server-port=");
-            writer.println("ram=1");
-            writer.println("map=world");
             writer.close();
         }
+
         // Get panel config
         FileInputStream pc = new FileInputStream(panelDir + "\\options.txt");
         properties = new Properties();
         properties.load(pc);
         jar = properties.getProperty("server-jar");
-        serverPort = properties.getProperty("server-port");
-        map = properties.getProperty("map");
-        ram = Integer.parseInt(properties.getProperty("ram"));
         pc.close();
-        // Update port in server.properties;
-        FileInputStream sc = new FileInputStream("server\\server.properties");
-        OutputStream out = null;
-        properties = new Properties();
-        properties.load(sc);
-        properties.setProperty("server-port", serverPort);
-        properties.setProperty("level-name", map);
-        properties.store(new FileOutputStream("server\\server.properties"), null);
-        pc.close();
-        // Send a copy of the server.properties to the panel
-        Files.copy(new File("server\\server.properties").toPath(), new File(panelDir + "\\server\\server.properties").toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        // Sync server.properties
+        if(new File(panelDir + "\\server\\server.properties").exists()) {
+            Files.copy(new File(panelDir + "\\server\\server.properties").toPath(), new File(".\\server\\server.properties").toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+        else {
+            Files.copy(new File(".\\server\\server.properties").toPath(), new File(panelDir + "\\server\\server.properties").toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+
         // Create new ProcessBuilder
         ProcessBuilder pb = new ProcessBuilder("java", "-jar", "..\\server\\minecraft_server.1.9.jar", "-Xmx" + Integer.toString(ram) + "G", "nogui");
         // Change work directory
@@ -79,7 +109,8 @@ public static ServerSocket socket;
         pb.redirectOutput(new File(panelDir + "\\log.txt"));
         // Start ProcessBuilder
         p = pb.start();
-        socket = new ServerSocket(port);
+        socket = new ServerSocket(8040);
+        votifier = new ServerSocket(8192);
     }
 
     public static void main(String[] args) throws java.io.IOException {
@@ -129,7 +160,12 @@ public static ServerSocket socket;
                         }
                     }
                 }
-
+                vote = votifier.accept();
+                if(vote.getInputStream() != null) {
+                    BufferedReader vbf = new BufferedReader(new InputStreamReader(vote.getInputStream()));
+                    byte[] decodedBytes = vbf.readLine().getBytes();
+                    PrivateKey key = readPrivateKey(new File("private.key"));
+                }
                 Thread.sleep(50);
             }
             catch(Exception err) {
