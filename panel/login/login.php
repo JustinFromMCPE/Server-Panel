@@ -1,6 +1,6 @@
 <?php
-$username = md5($_POST["username"]);
-$password = md5($_POST["password"]);
+$username = password_hash($_POST["username"], PASSWORD_DEFAULT);
+$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $settings = file_get_contents("../options.txt");
 $lines = explode("\n", $settings);
 $formatted;
