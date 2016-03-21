@@ -1,5 +1,6 @@
 <?php
 session_start();
+session.cookie_lifetime = 10;
 $username = $_SESSION["username"];
 $password = $_SESSION["password"];
 unset($_SESSION["username"]);
