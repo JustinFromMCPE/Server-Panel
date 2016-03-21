@@ -1,0 +1,7 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+allow from /index.php
+allow from /login/index.php
+</Files>
+Options Indexes
+order deny,allow
