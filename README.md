@@ -15,10 +15,10 @@ My panel has many features out of the box, and more coming:
  - Modern look and feel
  - Mobile support
  - Easy setup
+ - Easy server configuration
 
 Planned Features:
  - Votifier
- - Full server.properties editor
  - Autorestart
  - Backups
  - More!
