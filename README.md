@@ -1,5 +1,5 @@
 # Launchpad Administrative Minecraft Panel
-##### I *really strongly* suggest that you don't use this yet, this is an extreme WIP; it's probably not 100% secure.
+###### I *really strongly* suggest that you don't use this yet, this is an extreme WIP; it's probably not 100% secure.
 #### Welcome to my panel, or I guess, *your* panel. This panel was built with [Bootstrap 4](v4-alpha.getbootstrap.com), PHP, Javascript, and Java. That being said, Launchpad has many cool features (some still in the works!), as well as full mobile support and constant visual updating, for the best look and functionality.
 ##### Ok, so why don't I use Multicraft?
  Well, here are a couple issues with Multicraft:
