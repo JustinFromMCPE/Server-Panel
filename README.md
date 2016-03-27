@@ -12,6 +12,7 @@ Ok, so why should I use your panel?
 My panel has many features out of the box, and more coming:
  - It's 100% free!
  - Open source
+ - Votifier!
  - No class injection
  - Modern look and feel
  - Mobile support
@@ -19,7 +20,7 @@ My panel has many features out of the box, and more coming:
  - Easy server configuration
 
 Planned Features:
- - Votifier
+ - Scheduled tasks
  - Autorestart
  - Backups
  - More!
