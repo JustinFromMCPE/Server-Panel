@@ -16,8 +16,5 @@ function SetServerConfig() {
 	document.getElementById("brand").textContent = PanelConfigFormatted[0][1];
 	document.getElementById("port").value = PanelConfigFormatted[3][1];
 	document.getElementById("jar").value = PanelConfigFormatted[4][1];
-	document.getElementById("server-port").value = PanelConfigFormatted[5][1];
-	document.getElementById("ram").value = PanelConfigFormatted[6][1];
-	document.getElementById("map-name").value = PanelConfigFormatted[7][1];
 }
 </script>

@@ -24,7 +24,8 @@
 				<br>
 				<h4>Password:</h4>
 				<input name="password" class="form-control" type="password">
-				<input type="submit" class="btn btn-block btn-success" style="margin-top: 80px; margin-bottom: 20px;" value="Log In">
+				<h6 style="padding-top: 10px">Forgot your password?</h6>
+				<input type="submit" class="btn btn-block btn-success" style="margin-top: 60px; margin-bottom: 20px;" value="Log In">
 			</form>
 			  <script>
     function LogIn() {

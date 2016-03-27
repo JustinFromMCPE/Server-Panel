@@ -27,7 +27,7 @@ function SendCommand(request) {
 			dataType: "json",
 			data: {"command":"say " + request.command,"type":request.type},
 			url: "php/send.php",
-			success: function(data) {
+			success: function() {
 			}
 		 });
 	}
@@ -38,7 +38,7 @@ function SendCommand(request) {
 			dataType: "json",
 			data: {"command":request.command,"type":request.type},
 			url: "php/send.php",
-			success: function(data) {
+			success: function() {
 			}
 		 });
 	}
@@ -49,8 +49,36 @@ function ApplySettings() {
 		type: "POST",
 		async: false,
 		dataType: "json",
-		data: {"name":document.getElementById("name").value,"username":document.getElementById("username").value,"password":document.getElementById("password").value,"port":document.getElementById("port").value,"jar":document.getElementById("jar").value,"server-port":document.getElementById("server-port").value,"ram":document.getElementById("ram").value,"map":document.getElementById("map-name").value},
-		url: 'php/panel-apply.php'
+		data: {"name":document.getElementById("name").value,"username":document.getElementById("username").value,"password":document.getElementById("password").value,"port":document.getElementById("port").value,"jar":document.getElementById("jar").value},
+		url: 'php/panel-apply.php',
+		success: function() {
+			return false;
+		}
+	});
+}
+function ApplyServerSettings() {
+	table = document.getElementById("ConfigTable");
+	data = {};
+	for(i = 0; i < table.rows.length; i++) {
+		data[table.rows[i].cells[0].innerHTML] = table.rows[i].cells[1].children[0].value;
+	}
+	$.ajax({
+		type: "POST",
+		async: false,
+		dataType: "json",
+		data: data,
+		url: 'php/server-apply.php',
+		success: function() {
+		}
+	});
+}
+function ApplyVotifierSettings() {
+	$.ajax({
+		type: "POST",
+		async: false,
+		dataType: "json",
+		data: {"enabled":document.getElementById("votifier").checked,"public":document.getElementById("public").value,"private":document.getElementById("private").value,"reward":document.getElementById("reward").value},
+		url: 'php/votifier-apply.php',
 	});
 }
 function ApplyWallpaper() {

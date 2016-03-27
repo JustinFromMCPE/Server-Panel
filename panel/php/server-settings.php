@@ -15,13 +15,18 @@ else {
 function SetConfig() {
 	var ConfigTable = document.getElementById("ConfigTable");
     var ConfigFormatted = [];
-    for (i = 2; i < Config.length; i++) {
+    for (i = 0; i < Config.length; i++) {
         ConfigFormatted[i] = Config[i].split("=");
 		row = ConfigTable.insertRow(-1);
 		cell1 = row.insertCell(0);
 		cell2 = row.insertCell(1);
 		cell1.innerHTML = ConfigFormatted[i][0];
-		cell2.innerHTML = ConfigFormatted[i][1];
+		if(i < 2) {
+			cell2.innerHTML = '<input class="form-control" hidden value="' + ConfigFormatted[i][1] + '">';
+		}
+		else {
+			cell2.innerHTML = '<input class="form-control" value="' + ConfigFormatted[i][1] + '">';
+		}
 
     }
 } 

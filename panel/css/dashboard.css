@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-family: 'Raleway', sans-serif;
 }
 
 
@@ -14,7 +15,6 @@ body {
 
 .sub-header {
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
 }
 
 /*
@@ -22,7 +22,10 @@ body {
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-  border: 0;
+  	border: 0;
+    background-color: rgba(50,50,50,0.9);
+	-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
 }
 
 /*
@@ -41,32 +44,50 @@ body {
     left: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding-top: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    background-color: rgba(170,170,170,0.8);
+	-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
   }
 }
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
+	margin-bottom: 20px;
 }
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
+.nav-item {
+	border-width: 0px;
+	border-bottom-style: inset;
+	border-bottom-width: 4px;
+	border-bottom-color: rgba(0,0,0,0.2);
+	margin-right: -20px;
+	-webkit-transition: border-bottom-color 0.4s; 
+			transition: border-bottom-color 0.4s;
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-}
+.nav-item:hover, .nav-item:active, .nav-item:focus {
+	border-bottom-color: rgba(0,0,0,0.8);
 
-
+}
+.sidebar .nav-link {
+	color: rgba(0,0,0,0.4);
+	font-weight: bold;
+	font-size: 18px;
+	display:block;
+	width: 100%;
+	height: 2.5em;
+	padding-bottom: -2px;
+	padding-left: 10px;
+	padding-top: 10px;
+	-webkit-transition: color 0.4s; 
+			transition: color 0.4s;
+}
+.nav-link:hover, .nav-link:active, .nav-link:focus {
+	background-color: transparent;
+	color: rgba(0,0,0,0.8);
+	border: hidden;
+}
 /*
  * Main content
  */
@@ -83,23 +104,20 @@ body {
 .main .page-header {
   margin-top: 0;
 }
-
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
+.card {
+	background-color: rgba(240,240,240,0.8);
+	-webkit-backdrop-filter: blur(2px);
+			backdrop-filter: blur(2px);
+	border-width: 0px;
 }
-.placeholders h4 {
-  margin-bottom: 0;
+.list-group-item {
+	background-color: transparent;
 }
-.placeholder {
-  margin-bottom: 20px;
+.btn {
+	-webkit-transition: color 0.4s;
+			transition: color 0.4s;
+	-webkit-transition: background-color 0.4s;
+			transition: background-color 0.4s;
 }
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
+#reward {
 }

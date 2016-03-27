@@ -1,7 +1,14 @@
-<Files ~ "^\.(htaccess|htpasswd)$">
-deny from all
-allow from /index.php
-allow from /login/index.php
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost [NC]
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC]
+RewriteRule \.(key|txt|bat|png|php)$ - [F]
+
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
 </Files>
-Options Indexes
-order deny,allow
+
+<Files login.php>
+    Order Allow,Deny
+    Allow from all
+</Files>

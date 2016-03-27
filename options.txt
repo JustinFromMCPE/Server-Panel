@@ -1,5 +1,0 @@
-name=Minecraft Server
-username=$2y$10$9zRuY/h1lx.7jY5jgwcLKuKVHV7bf33mkcglBt4fEXQgU4xsRoMje
-password=$2y$10$ZM2OiBQkbyaORXMkFNEnEuho0JAnxorjHTULLJKKH69LVmu7nYPau
-wrapper-port=8040
-server-jar=minecraft_server.1.9.jar
